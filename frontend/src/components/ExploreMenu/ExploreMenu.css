@@ -30,7 +30,7 @@
     display: none; /* Hide scrollbar in Chrome & Safari */
 }
 
-.explore-menu-list-item{
+.explore-menu-list-item img{
     width: 7.5vw;
     min-width: 80px;
     cursor: pointer;
@@ -59,4 +59,10 @@
     border: 4px solid tomato;
     border-radius: 50%;
     padding: 2px;
+}
+@media (max-width:1050px) {
+   .explore-menu-text{
+      max-width: 100%;
+      font-size:14px;
+   }
 }

@@ -1,11 +1,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
 
 *{
-  padding: 0;
+  /* padding: 0;
   margin: 0;
   box-sizing:border-box;
   font-family: outfit;
+  scroll-behavior: smooth; */
 }
 body{
   background-color: beige;
