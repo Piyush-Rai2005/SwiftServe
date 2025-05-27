@@ -10,7 +10,7 @@
   scroll-behavior: smooth; */
 }
 body{
-  background-color: beige;
+  background-color: rgb(205, 218, 218);
   min-height: 100vh;
 }
 a{

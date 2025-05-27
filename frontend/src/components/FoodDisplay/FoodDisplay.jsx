@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './FoodDisplay.css'
 import { StoreContext } from '../../context/StoreContext'
 import FoodItem from '../FoodItem/FoodItem'
+import { Link } from 'react-router-dom'; // <-- add at the top
 
 
 const FoodDisplay = ({category}) => {
@@ -13,7 +14,17 @@ const FoodDisplay = ({category}) => {
         <div className='food-display-list'>
           {food_list && food_list.map((item,index)=>{
             if(category==='All' || category===item.category){
-              return <FoodItem key={item._id || index} id={item._id} name={item.name} price={item.price} description={item.description} image={item.image}/>
+             return (
+  <Link to={`/food/${item._id}`} key={item._id || index} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <FoodItem
+      id={item._id}
+      name={item.name}
+      price={item.price}
+      description={item.description}
+      image={item.image}
+    />
+  </Link>
+);
             }
           })}
         </div>

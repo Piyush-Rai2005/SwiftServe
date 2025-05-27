@@ -5,7 +5,7 @@ import {assets} from '../../assets/assets'
 const Navbar = () => {
   return (
     <div className='navbar'>
-        <img  className="logo" alt="" src={assets.logo} />
+        <img  className="logo" alt="" src={assets.logo_admin} />
         <img className="profile"src={assets.profile_image} alt="" />
     </div>
   )

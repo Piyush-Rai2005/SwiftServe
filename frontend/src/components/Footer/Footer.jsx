@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { assets } from '../../assets/assets';
 
 const Footer = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
           {/* Leftmost Section (Logo + Text) */}
           <div className="flex flex-col items-start gap-5">
             <div>
-              <img src={assets.logo} alt="Logo" className="w-40" />
+              <img src={assets.logo_main} alt="Logo" className="w-40 rounded-lg" />
               <p className="text-sm md:text-base">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, exercitationem 
                 consequatur quibusdam nulla natus praesentium veniam voluptates neque corrupti dolores 
@@ -45,7 +45,7 @@ const Footer = () => {
             <h2 className="text-white font-medium text-lg">GET IN TOUCH</h2>
             <ul className="list-none space-y-2 cursor-pointer">
               <li className="text-sm md:text-base">+0731-238-232-6353</li>
-              <li className="text-sm md:text-base">contact@tomato.com</li>
+              <li className="text-sm md:text-base">contact@swiftserve.com</li>
             </ul>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Footer = () => {
         
         {/* Copyright */}
         <p className="text-xs md:text-sm text-center">
-          Copyright © 2025 Tomato.com. All rights reserved.
+          Copyright © 2025 SwiftServe.com. All rights reserved.
         </p>
       </div>
     </div>
