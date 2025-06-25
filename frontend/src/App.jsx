@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
+import AdminApp from './src/adminApp'; // ✅ Import AdminApp
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Cart from './pages/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import Verify from './pages/Verify/Verify';
-// import MyOrders from './pages/MyOrders/MyOrders'
+
+import MyOrders from './pages/MyOrders/MyOrders'
 import FoodItemPage from './components/FoodItemPage/FoodItemPage'; // ✅ Import new page
 import './App.css';
 
@@ -21,9 +23,11 @@ const App = () => {
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/admin/*' element={<AdminApp />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/verify' element={<Verify />} />
+          <Route path="/myorders" element={<MyOrders />} />
           <Route path='/food/:id' element={<FoodItemPage />} /> {/* ✅ New route */}
         </Routes>
       </div>
