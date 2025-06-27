@@ -1,44 +1,83 @@
-.add{
-    width: 70%;
-    margin-left: max(5vw,25px);
-    margin-top: 50px;
-    color: #6d6d6d;
-    font-size: 16px;
+/* Outer container to center the form with blue background */
+.add {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
-.add form{
+
+/* Form styling */
+.add form {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
-.add-img-upload img{
+
+/* Upload image section */
+.add-img-upload img {
     width: 120px;
 }
-.add-product-name, .add-product-description{
-    width: max(40%,280px);
+
+/* Input fields */
+.add-product-name,
+.add-product-description {
+    width: 100%;
 }
-.add-product-name input, .add-product-description textarea{
+
+.add-product-name input,
+.add-product-description textarea {
+    width: 100%;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
 }
-.add-category-price{
+
+/* Category and Price section */
+.add-category-price {
     display: flex;
     gap: 30px;
+    flex-wrap: wrap;
 }
-.add-category-price select, .add-category-price input{
-    max-width: 120px;
+
+.add-category-price select,
+.add-category-price input {
+    max-width: 180px;
+    width: 100%;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
 }
-.add-btn{
-    max-width: 120px;
-    border-radius: 50px;
-    border-style: ridge;
-    padding: 10px;
-    background-color: black;
+
+/* Add product button */
+.add-btn {
+    max-width: 160px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: #1e293b; /* dark slate */
     color: white;
+    font-weight: 500;
+    font-size: 14px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
-@media (max-width:400px) {
-    .add{
-        margin-left: 15px;
+
+.add-btn:hover {
+    background-color: #0f172a;
+}
+
+/* Responsive behavior */
+@media (max-width: 500px) {
+    .add {
+        padding: 20px;
     }
-    .add-product-name, .add-product-description{
-        width: max(40%,220px);
+
+    .add-category-price {
+        flex-direction: column;
     }
 }

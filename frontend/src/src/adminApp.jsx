@@ -7,6 +7,7 @@ import Orders from './pages/Orders/Orders'
 import List from './pages/List/List'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import './index.css'
 
 const AdminApp = () => {
     const url='http://localhost:4000'
