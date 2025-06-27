@@ -12,10 +12,13 @@
 
 }
 
-.food-item-image{
-    width: 100%; /* Ensures image fits within the container */
-    border-radius: 10px; /* Optional: Rounds image corners */
+.food-item-image {
+    width: 100%;
+    height: 200px;               /* Fixed height for consistent layout */
+    object-fit: cover;           /* Prevents distortion, crops if needed */
+    border-radius: 10px;
 }
+
 .food-item-info{
     padding: 20px;
 }
