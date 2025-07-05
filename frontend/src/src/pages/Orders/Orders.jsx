@@ -11,13 +11,14 @@ import { useNavigate } from "react-router-dom";
 
 const Orders = ({ url }) => {
   const navigate = useNavigate();
-  const { token, admin } = useContext(StoreContext);
+  const { token, admin ,loading} = useContext(StoreContext);
   const [orders, setOrders] = useState([]);
 
   const fetchAllOrder = async () => {
     const response = await axios.get(url + "/api/order/list", {
-      headers: { token },
+      headers: { Authorization: `Bearer ${token}` },
     });
+    console.log(response.data);
     if (response.data.success) {
       setOrders(response.data.data);
     }
@@ -30,7 +31,7 @@ const Orders = ({ url }) => {
         orderId,
         status: event.target.value,
       },
-      { headers: { token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
     if (response.data.success) {
       toast.success(response.data.message);
@@ -39,13 +40,19 @@ const Orders = ({ url }) => {
       toast.error(response.data.message);
     }
   };
-  useEffect(() => {
-    if (!admin && !token) {
-      toast.error("Please Login First");
-      navigate("/");
-    }
+useEffect(() => {
+  if (loading) return;  // wait until loading is done!
+
+  if (!token) {
+    toast.error("Please Login First");
+    navigate("/");
+  } else if (!admin) {
+    toast.error("You are not admin");
+    navigate("/");
+  } else {
     fetchAllOrder();
-  }, []);
+  }
+}, [token, admin, loading]);
 
   return (
     <div className="order add">

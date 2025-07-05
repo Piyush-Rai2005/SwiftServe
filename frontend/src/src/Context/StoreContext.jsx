@@ -6,17 +6,31 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [admin, setAdmin] = useState(false);
-
+  const [loading, setLoading] = useState(true);  // <-- new
 
   useEffect(() => {
-    async function loadData() {
-      if (localStorage.getItem("token")) {
-        setToken(localStorage.getItem("token"));
+    const loadData = async () => {
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        setToken(storedToken);
+
+        try {
+          const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user/details`, {
+            headers: { Authorization: `Bearer ${storedToken}` }
+          });
+
+          if (res.data.success && res.data.user) {
+            setAdmin(res.data.user.role === "admin");
+          } else {
+            setAdmin(false);
+          }
+        } catch (err) {
+          console.error("Error verifying user:", err);
+          setAdmin(false);
+        }
       }
-      if (localStorage.getItem("admin")) {
-        setAdmin(localStorage.getItem("admin"));
-      }
-    }
+      setLoading(false);  // <-- finished checking
+    };
     loadData();
   }, []);
 
@@ -25,7 +39,9 @@ const StoreContextProvider = (props) => {
     setToken,
     admin,
     setAdmin,
+    loading,  // <-- provide loading state
   };
+
   return (
     <StoreContext.Provider value={contextValue}>
       {props.children}

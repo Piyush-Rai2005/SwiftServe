@@ -12,7 +12,9 @@ const MyOrders = () => {
     const response = await axios.post(
       url + "/api/order/userorders",
       {},
-      { headers: { token } }
+      { headers: { 
+        Authorization: `Bearer ${token}`
+       } }
     );
     if (response.data.success) {
       setData(response.data.data);
