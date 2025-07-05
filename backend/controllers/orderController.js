@@ -88,7 +88,7 @@ const userOrders = async (req, res) => {
 // Listing orders for admin pannel
 const listOrders = async (req, res) => {
   try {
-    let userData = await userModel.findById(req.body.userId);
+    let userData = await userModel.findById(req.userId);  // ✅ use req.userId
     if (userData && userData.role === "admin") {
       const orders = await orderModel.find({});
       res.json({ success: true, data: orders });
@@ -100,17 +100,16 @@ const listOrders = async (req, res) => {
     res.json({ success: false, message: "Error" });
   }
 };
-
 // api for updating status
 const updateStatus = async (req, res) => {
   try {
-    let userData = await userModel.findById(req.body.userId);
+    let userData = await userModel.findById(req.userId);   // ✅ fix here
     if (userData && userData.role === "admin") {
       await orderModel.findByIdAndUpdate(req.body.orderId, {
         status: req.body.status,
       });
       res.json({ success: true, message: "Status Updated Successfully" });
-    }else{
+    } else {
       res.json({ success: false, message: "You are not an admin" });
     }
   } catch (error) {
@@ -118,5 +117,6 @@ const updateStatus = async (req, res) => {
     res.json({ success: false, message: "Error" });
   }
 };
+
 
 export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus };
