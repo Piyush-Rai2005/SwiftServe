@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
 
 const AdminApp = () => {
-    const url='http://localhost:4000'
+    const url=import.meta.env.VITE_BACKEND_URL
   return (
     <div className="admin-app">
   <ToastContainer />
