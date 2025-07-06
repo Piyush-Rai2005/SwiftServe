@@ -72,7 +72,7 @@ app.post("/api/ask-food-question", async (req, res) => {
     const food = await foodModel.findById(foodId);
     if (!food) return res.status(404).json({ error: "Food not found" });
 
-   const menuResponse = await axios.get(`${process.env.FRONTEND_URL}/api/food/list`);
+   const menuResponse = await axios.get(`${process.env.BACKEND_URL}/api/food/list`);
     const menu = Array.isArray(menuResponse.data?.data) ? menuResponse.data.data : [];
 
     if (menu.length === 0) {
@@ -106,7 +106,7 @@ app.post("/api/ask-menu-recommendation", async (req, res) => {
     const food = await foodModel.findById(foodId);
     if (!food) return res.status(404).json({ error: "Food not found" });
 
-    const menuResponse = await axios.get(`${process.env.FRONTEND_URL}/api/food/list`);
+    const menuResponse = await axios.get(`${process.env.BACKEND_URL}/api/food/list`);
     const menu = menuResponse.data;
 
 if (!Array.isArray(menu) || menu.length === 0) {
