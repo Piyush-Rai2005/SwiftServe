@@ -35,6 +35,8 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
+app.get('/ping', (req, res) => res.send('pong'));
+
 // Gemini route: Get AI-generated food description + nutrition
 app.get("/api/food-info/:id", async (req, res) => {
   try {
